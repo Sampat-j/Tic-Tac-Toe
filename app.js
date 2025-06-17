@@ -24,20 +24,38 @@ const resetGame=()=>{
 
 };
 boxes.forEach((box)=>{
-    box.addEventListener("click",()=>{
-        if(turnO===true){
-            //PlayerO
-          box.innerText="0";
-          turnO=false;
-        }else{
-            //PlayerX
-            box.innerText="X";
-            turnO=true;
-        }
-        box.disabled=true;
+    // box.addEventListener("click",()=>{
+    //     if(turnO===true){
+    //         //PlayerO
+    //       box.innerText="0";
+    //       turnO=false;
+    //     }else{
+    //         //PlayerX
+    //         box.innerText="X";
+    //         turnO=true;
+    //     }
+    //     box.disabled=true;
 
-        checkWinner();
-    })
+    //     checkWinner();
+    // })
+    box.addEventListener("click", () => {
+    if (box.innerText !== "") return;
+
+    if (turnO) {
+        box.innerText = "O";
+    } else {
+        box.innerText = "X";
+    }
+    box.disabled = true;
+
+    checkWinner();
+    turnO = !turnO;
+
+    if (isVsAI() && !turnO) {
+        setTimeout(aiMove, 500); // Delay AI move slightly
+    }
+});
+
 });
 const disableBoxes=()=>{
     for(let box of boxes){
@@ -75,4 +93,27 @@ checkWinner=()=>{
 
 newGamebtn.addEventListener("click",resetGame);
 resetbtn.addEventListener("click",resetGame);
+
+//ai
+const modeSelect = document.getElementById("mode");
+
+function isVsAI() {
+  return modeSelect.value === "ai";
+};
+
+function aiMove() {
+    let emptyBoxes = Array.from(boxes).filter(box => box.innerText === "");
+    if (emptyBoxes.length === 0) return;
+
+    let randIndex = Math.floor(Math.random() * emptyBoxes.length);
+    let aiBox = emptyBoxes[randIndex];
+
+    aiBox.innerText = "X";
+    aiBox.disabled = true;
+
+    checkWinner();
+    turnO = !turnO;
+}
+
+
 

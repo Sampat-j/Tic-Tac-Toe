@@ -10,10 +10,16 @@
     <div class="msg-container hide">
         <p id="msg">Winner</p>
         <button id="new-btn">New Game</button>
-
     </div>
+    <div class="modeselect">
+        <select name="" id="mode">
+        <option value="pvp">Player vs Player</option>
+        <option value="ai">Player vs AI</option>
+    </select>
+    </div>
+
     <main>
-      <h1>Tic Tac Toe</h1>
+      <h1 id="heading">Tic Tac Toe</h1>
       <div class="container">
         <div class="game">
             <button class="box"></button>
@@ -29,8 +35,6 @@
       </div>
      <button id="reset-btn">Reset Game</button>
     </main>
-    
-
 <script src="app.js"></script>
 </body>
 </html>

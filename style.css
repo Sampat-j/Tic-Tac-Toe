@@ -64,3 +64,17 @@ body{
 .hide{
     display: none;
 }
+#heading{
+    margin-top: 1rem;
+}
+
+
+#mode{
+    margin-top: 1rem;
+    padding: 0.3rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+}
